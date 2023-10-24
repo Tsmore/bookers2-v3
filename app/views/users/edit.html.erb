@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-sm-12 col-md-8 col-lg-5 mx-auto">
+      <j2>User Info</j2>
+      <%= render 'layouts/error', obj:@user %>
+      <%= form_with model: @user do |f| %>
+        <div class="form-group">
+          <%= f.label :Name, "Name", class: "control-label" %>
+          <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前", class: "form-control"  %>
+        </div>
+        <div class="form-group">
+          <%= f.label :Image, "Image", class: "control-label" %>
+          <div class="custom-file">
+          <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :Introduction, "Introduction", class: "control-label" %>
+          <%= f.text_area :introduction, rows: 2, id:"inputIntroduction", placeholder:"紹介", class: "form-control"  %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Update User", class: "btn btn-secondary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

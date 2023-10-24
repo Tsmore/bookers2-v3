@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-sm-12 col-md-8 col-lg-5 mx-auto">
+      <h2>Editing Book</h2>
+      <%= render 'layouts/error', obj:@book %>
+      <%= form_with model: @book, url: book_path(@book), method: :patch do |f| %>
+        <div class="form-group">
+          <%= f.label :Title, "Title", class: "control-label" %>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :Opinion, "Opinion", class: "control-label" %>
+          <%= f.text_area :body, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <td><%= f.submit 'Update Book', class: "btn btn-success" %></td>
+        </div>
+      <% end %>
+      <div class="form-group">
+        <%= link_to 'Show', book_path, class: "link-class" %> |
+        <%= link_to 'Back', books_path, class: "link-class" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 justify-content-center mt-3">
+      <h2>Results</h2>
+      <table class="table table-hover">
+        <% if @range == "User" %>
+          <thead>
+            <tr>
+              <th>image</th>
+              <th>name</th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td><%= image_tag user.get_profile_image(50,50) %></td>
+                <td><%= user.name %></td>
+                <td>Following: <%= user.followings.count %></td>
+                <td>Followers: <%= user.followers.count %></td>
+                <td><%= link_to 'Show', user, class: "user_#{user.id}" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        <% else %>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Title</th>
+              <th>Opinion</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @books.each do |book| %>
+              <tr>
+                <td><%= image_tag book.user.get_profile_image(50,50) %></td>
+                <td><%= link_to book.title, book_path(book) %></td>
+                <td><%= book.body %></td>
+                <td>Likes: <%= book.favorites.count %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+

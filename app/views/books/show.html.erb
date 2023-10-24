@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-md-3">
+      <%= render 'layouts/info', user:@book.user %>
+      <%= render 'layouts/book', book:Book.new %>
+    </div>
+    <div class="col-md-8 offset-1">
+      <h2>Book Detail</h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>
+              <div><%= image_tag @book.user.get_profile_image(80,80) %></div>
+              <div><%= link_to @book.user.name, user_path(@book.user) %></div>
+            </th>
+            <td><%= link_to @book.title, book_path(@book) %></td>
+            <td><%= @book.body %></td>
+            <td id="favorite_buttons_<%= @book.id %>"><%= render 'favorites/fav', book:@book %></td>
+            <td id="comments_count_<%= @book.id %>">Comments: <%= @book.book_comments.count %></td>
+            <% if @book.user == current_user %>
+              <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-outline-success" %></td>
+              <td><%= link_to 'Destroy', book_path(@book), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-outline-danger" %></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+      <div id="book_comments">
+        <%= render 'book_comments/comments', book:@book, book_comment:@book_comment %>
+      </div>
+    </div>
+  </div>
+</div>

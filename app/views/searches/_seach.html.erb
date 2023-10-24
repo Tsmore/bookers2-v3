@@ -1,0 +1,18 @@
+<% if user_signed_in? %>
+  <div class="search_form mt-3">
+    <%= form_with url: search_path, local: true, method: :get, class: "form-inline" do |f| %>
+      <div class="form-group mr-2">
+        <%= f.text_field :word, class: "form-control form-control-sm", placeholder: "Search word..." %>
+      </div>
+      <div class="form-group mr-2">
+        <%= f.select :range, options_for_select([['User'], ['Book']]), {}, {class: 'form-control form-control-sm'} %>
+      </div>
+      <div class="form-group mr-2">
+        <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["前方一致","forward_match"], ["後方一致","backward_match"], ["部分一致","partial_match"]]), {}, {class: 'form-control form-control-sm'} %>
+      </div>
+      <div class="form-group mr-2">
+        <%= f.submit "Search", class: "btn btn-outline-primary btn-sm" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
