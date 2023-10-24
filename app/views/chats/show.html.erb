@@ -1,0 +1,19 @@
+<div class="container mt-5">
+  <div class="row mx-auto">
+    <div class="col-md-8 offset-2">
+      <div class="messages-list shadow p-3 mb-5 bg-white rounded">
+        <h2>Message with:</h2>
+        <h4><%= image_tag @user.get_profile_image(30,30) %><%= @user.name %></h4>
+        <div class="actual-messages">
+          <% @chats.each do |chat| %>
+            <%= render 'chats/chat', chat:chat %>
+          <% end %>
+        </div>
+        <%= render 'layouts/error', obj:@chat %>
+        <div class="form-group pt-5">
+          <%= render 'chats/chat_input', chat:@chat %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

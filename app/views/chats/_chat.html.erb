@@ -1,0 +1,35 @@
+<% if chat.user == current_user %>
+  <div class="row mb-1 justify-content-end" id="chat_<%= chat.id %>">
+    <div class="col-auto">
+      <%= link_to chat, method: :delete, remote: true, data: {confirm: "Delete"}, class: "text-decoration-none text-white" do %>
+        <div class="card bg-info text-white" style="height: 30px;">
+          <div class="d-flex align-items-center h-100">
+            <div class="card-body text-center">
+              <%= chat.message %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-auto">
+      <%= image_tag chat.user.get_profile_image(50,50) %>
+      <%= chat.created_at.strftime('%H:%M') %>
+    </div>
+  </div>
+<% else %>
+  <div class="row mb-1">
+    <div class="col-auto">
+      <%= chat.created_at.strftime('%H:%M') %>
+      <%= image_tag chat.user.get_profile_image(50,50) %>
+    </div>
+    <div class="col-auto">
+      <div class="card bg-secondary text-white" style="height: 30px;">
+        <div class="d-flex align-items-center h-100">
+          <div class="card-body text-center">
+            <%= chat.message %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

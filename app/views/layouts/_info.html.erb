@@ -31,6 +31,6 @@
     <%= link_to "follow", user_relationships_path(user.id), method: :post, class: "btn btn-outline-primary" %>
   <% end %>
   <% if current_user.mutual_follow?(user) %>
-    <!--%= link_to "Chat Room", room_path(room_id), class: "btn btn-outline-success" %>-->
+    <%= link_to "Chat Room", chat_path(user.id), class: "btn btn-outline-success" %>
   <% end %>
 <% end %>

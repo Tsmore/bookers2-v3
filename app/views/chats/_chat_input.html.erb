@@ -1,0 +1,7 @@
+<%= form_with model: chat, url: chats_path, local: false, class: 'input-group' do |f| %>
+  <%= f.hidden_field :room_id, value: @room.id %>
+  <%= f.text_area :message, id: "message_text_area", placeholder: 'Enter your message...', class: 'form-control' %>
+  <div class="input-group-append">
+    <%= f.submit 'Send', class: 'btn btn-outline-success btn-block mt-4' %>
+  </div>
+<% end %>
