@@ -41,6 +41,7 @@
               <%= render 'favorites/fav', book:book %>
               </td>
             <td>Comments: <%= book.book_comments.count %></td>
+            <td>Views: <%= book.read_counts.count %></td>
           </tr>
         <% end %>
         </tbody>
