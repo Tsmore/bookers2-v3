@@ -26,9 +26,9 @@
   <% end %>
 <% else %>
   <% if current_user.following?(user) %>
-    <%= link_to "Following", user_relationships_path(user.id), method: :delete, class: "btn btn-outline-info" %>
+    <%= link_to "Following", user_relationships_path(user.id), method: :delete, remote: true, class: "btn btn-outline-info" %>
   <% else %>
-    <%= link_to "Follow", user_relationships_path(user.id), method: :post, class: "btn btn-outline-primary" %>
+    <%= link_to "Follow", user_relationships_path(user.id), method: :post, remote: true, class: "btn btn-outline-primary" %>
   <% end %>
   <% if current_user.mutual_follow?(user) %>
     <%= link_to "Chat Room", chat_path(user.id), class: "btn btn-outline-success" %>

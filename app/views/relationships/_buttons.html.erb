@@ -1,0 +1,9 @@
+<div id="follow_wrapper_<%= user.id %>">
+  <% if current_user != user %>
+    <% if current_user.following?(user) %>
+      <%= link_to "Following", user_relationships_path(user.id), remote: true, method: :delete, id: "follow_button_#{user.id}" %>
+    <% else %>
+      <%= link_to "Follow", user_relationships_path(user.id), remote: true, method: :post, id: "follow_button_#{user.id}" %>
+    <% end %>
+  <% end %>
+</div>
