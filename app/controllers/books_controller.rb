@@ -15,7 +15,7 @@ class BooksController < ApplicationController
       when 'oldest'
         @books = Book.order(created_at: :asc)
       when 'highest_rated'
-        @books = Book.includes(:star)
+        @books = Book.includes(:ratings)
         .sort_by { |x| x.ratings.average(:value).to_f }
         .reverse
     else
