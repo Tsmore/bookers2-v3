@@ -9,11 +9,15 @@ class BooksController < ApplicationController
 
     case params[:order]
     when 'favorites'
-      @books = Book.includes(:favorited_users).
-        sort_by { |x| x.favorited_users.includes(:favorites).where(created_at: from...to).size }.
-        reverse
+      @books = Book.includes(:favorited_users)
+      .sort_by { |x| x.favorited_users.includes(:favorites).where(created_at: from...to).size }
+      .reverse
       when 'oldest'
         @books = Book.order(created_at: :asc)
+      when 'highest_rated'
+        @books = Book.includes(:star)
+        .sort_by { |x| x.ratings.average(:value).to_f }
+        .reverse
     else
       @books = Book.order(created_at: :desc)
     end
