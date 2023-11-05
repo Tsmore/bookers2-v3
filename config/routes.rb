@@ -13,5 +13,6 @@ Rails.application.routes.draw do
     resources :book_comments, only: [:create, :destroy]
   end
   resources :chats, only: [:create, :destroy, :show]
+  get 'tagsearches/search', to: 'tagsearches#search'
 
 end

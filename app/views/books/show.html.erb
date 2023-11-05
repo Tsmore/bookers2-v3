@@ -15,6 +15,11 @@
             </th>
             <td><%= link_to @book.title, book_path(@book) %></td>
             <td><%= @book.body %></td>
+            <td>
+              <% if @book.category.present? %>
+                <%= link_to @book.category, tagsearches_search_path(content: @book.category) %>
+              <% end %>
+            </td>
             <td id="favorite_buttons_<%= @book.id %>"><%= render 'favorites/fav', book:@book %></td>
             <td id="comments_count_<%= @book.id %>">Comments: <%= @book.book_comments.count %></td>
             <td>Views: <%= @book.read_counts.count %></td>
