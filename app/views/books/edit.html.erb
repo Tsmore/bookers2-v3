@@ -13,6 +13,9 @@
           <%= f.text_area :body, class: "form-control" %>
         </div>
         <div class="form-group">
+          <%= render "layouts/static.rate", book: @book %>
+        </div>
+        <div class="form-group">
           <td><%= f.submit 'Update Book', class: "btn btn-success" %></td>
         </div>
       <% end %>

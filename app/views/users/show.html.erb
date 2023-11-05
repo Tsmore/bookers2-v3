@@ -12,7 +12,7 @@
             <th scope="col"></th>
             <th scope="col">Title</th>
             <th scope="col">Opinion</th>
-            <th colspan="3"></th>
+            <th colspan="4"></th>
           </tr>
         </thead>
         <tbody>
@@ -22,6 +22,7 @@
               <td><%= link_to book.title, book_path(book) %></td>
               <td><%= book.body %></td>
               <td>Comments: <%= book.book_comments.count %></td>
+              <td><%= render "layouts/static.rate", book: book %></td>
             </tr>
           <% end %>
         </tbody>
