@@ -9,47 +9,12 @@
             <th scope="col">Title</th>
             <th scope="col">Opinion</th>
             <th scope="col">Tag</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col">
-              <div class="dropdown">
-                <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" id="orderDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Order
-                </button>
-                <div class="dropdown-menu" aria-labelledby="orderdropdown">
-                  <%= link_to "Favorites", books_path(order: "favorites"), class: "dropdown-item" %>
-                  <%= link_to "Latest", books_path(order: "latest"), class: "dropdown-item" %>
-                  <%= link_to "Oldest", books_path(order: "oldest"), class: "dropdown-item" %>
-                  <%= link_to "Rated", books_path(order: "highest_rated"), class: "dropdown-item" %>
-                </div>
-              </div>
+            <th colspan="5"></th>
             </th>
           </tr>
         </thead>
         <tbody>
-        <% @books.each do |book| %>
-          <tr>
-            <td>
-              <%= link_to user_path(book.user) do %>
-                <%= image_tag book.user.get_profile_image(80,80) %>
-              <% end %>
-            </td>
-            <td><%= link_to book.title, book_path(book) %></td>
-            <td><%= book.body %></td>
-            <td>
-              <% if book.category.present? %>
-                <%= link_to book.category, tagsearches_search_path(content: book.category) %>
-              <% end %>
-            </td>
-            <td id="favorite_buttons_<%= book.id %>">
-              <%= render 'favorites/fav', book:book %>
-              </td>
-            <td>Comments: <%= book.book_comments.count %></td>
-            <td>Views: <%= book.read_counts.count %></td>
-            <td><%= render "layouts/static.rate", book: book %></td>
-          </tr>
-        <% end %>
+          <%= render 'books/index', books: @books %>
         </tbody>
       </table>
     </div>

@@ -4,20 +4,22 @@ class BooksController < ApplicationController
   def index
     @book = Book.new
     @books = Book.all
-    to = Time.current.at_end_of_day
-    from = (to - 6.day).at_beginning_of_day
+    # to = Time.current.at_end_of_day
+    # from = (to - 6.day).at_beginning_of_day
 
     case params[:order]
-    when 'favorites'
-      @books = Book.includes(:favorited_users)
-      .sort_by { |x| x.favorited_users.includes(:favorites).where(created_at: from...to).size }
-      .reverse
+      when 'favorites'
+        @books = Book.select('books.*, COALESCE(COUNT(favorites.id), 0) as favorites_count')
+                      .left_outer_joins(:favorites)
+                      .group('books.id')
+                      .order('favorites_count DESC')
       when 'oldest'
         @books = Book.order(created_at: :asc)
       when 'highest_rated'
-        @books = Book.includes(:ratings)
-        .sort_by { |x| x.ratings.average(:value).to_f }
-        .reverse
+        @books = Book.select('books.*, COALESCE(AVG(ratings.value), 0) as average_rating')
+                      .left_outer_joins(:ratings)
+                      .group('books.id')
+                      .order('star DESC, average_rating DESC')
     else
       @books = Book.order(created_at: :desc)
     end
