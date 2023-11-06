@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row mt-3 mx-auto">
+    <div class="col-md-10 offset-1">
+      <h2><%= @user.name %>'s Bookmarks</h2>
+      <table class="table">
+        <tbody>
+          <%= render 'books/index', books: @bookmarks.map(&:book) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div

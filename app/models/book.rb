@@ -5,11 +5,17 @@ class Book < ApplicationRecord
   has_many :favorited_users, through: :favorites, source: :user
   has_many :book_comments, dependent: :destroy
   has_many :read_counts, dependent: :destroy
-  has_many :ratings
+  has_many :ratings, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
 
   validates :title, presence: true
   validates :body, presence: true, length: {maximum: 200}
   validates :category, presence: true
+
+  def find_bookmark(user)
+    bookmarks.find_by(user_id: user.id)
+  end
+
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)

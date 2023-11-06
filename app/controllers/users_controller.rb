@@ -24,7 +24,11 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
 
+  def bookmarks
+    @user = User.find(params[:id])
+    @bookmarks = @user.bookmarks.includes(:book)
   end
 
   private

@@ -7,10 +7,14 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
+    member do
+      get :bookmarks
+    end
   end
   resources :books, only: [:index, :show, :create, :update, :destroy, :edit]  do
     resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]
+    resources :bookmarks, only: [:create, :destroy]
   end
   resources :chats, only: [:create, :destroy, :show]
   get 'tagsearches/search', to: 'tagsearches#search'

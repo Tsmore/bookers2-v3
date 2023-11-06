@@ -14,8 +14,9 @@
     </td>
     <td><i class="fa-regular fa-comment"></i> <%= book.book_comments.count %></td>
     <td id="favorite_buttons_<%= book.id %>">
-      <%= render 'favorites/fav', book:book %>
+      <%= render 'favorites/fav', book: book %>
     </td>
+    <td id="bookmark_button_<%= book.id %>"><%= render 'bookmarks/bookmark', book: book %></td>
     <td><i class="fa-brands fa-watchman-monitoring"></i> <%= book.read_counts.count %></td>
     <td><%= render "layouts/static.rate", book: book %></td>
   </tr>
