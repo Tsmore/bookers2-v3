@@ -18,10 +18,12 @@
         <%= message %>
       </div>
     <% end %>
-    <div class="d-flex">
-      <%= render 'searches/search' %>
-      <%= render 'tagsearches/tagsearch' %>
-    </div>
+    <% if user_signed_in? %>
+      <div class="d-flex mt-3">
+        <%= render 'searches/search' %>
+        <%= render 'tagsearches/tagsearch' %>
+      </div>
+    <% end %>
     <%= yield %>
     <%= render 'layouts/footer' %>
   </body>

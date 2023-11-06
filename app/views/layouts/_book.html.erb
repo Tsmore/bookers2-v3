@@ -3,13 +3,17 @@
 <%= form_with model: book, html: {class: 'form-horizontal'} do |f| %>
   <div class="form-group">
     <%= f.label :title, "Title" %>
-    <%= f.text_field :title, placeholder: "Title here", class: "form-control" %>
+    <%= f.text_field :title, placeholder: "Title...", class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :body, "Opinion" %>
-    <%= f.text_area :body, rows: 4, placeholder: "Opinion here", class: "form-control" %>
+    <%= f.text_area :body, rows: 4, placeholder: "Opinion...", class: "form-control" %>
   </div>
 
+  <div class="form-group">
+    <%= f.label :category, "Category" %>
+    <%= f.text_field :category, placeholder: "Category...", class: "form-control" %>
+  </div>
 <!--Star-->
 
   <% if book.id.nil? %>
@@ -38,10 +42,6 @@
       <%= render 'layouts/static_rate', book:book %>
     </div>
   <% end %>
-  <div class="form-group">
-    <%= f.label :category, "Category" %>
-    <%= f.text_field :category, class: "form-control" %>
-  </div>
   <div class="form-group">
     <%= f.submit "Create Book", class: "btn btn-outline-success" %>
   </div>
