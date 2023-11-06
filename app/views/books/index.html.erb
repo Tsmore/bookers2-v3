@@ -13,9 +13,7 @@
             <th scope="col">Title</th>
             <th scope="col">Opinion</th>
             <th scope="col">Tag</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col"></th>
+            <th colspan="5"></th>
             <th scope="col">
               <div class="dropdown">
                 <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" id="orderDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -46,11 +44,11 @@
                 <%= link_to book.category, tagsearches_search_path(content: book.category) %>
               <% end %>
             </td>
+            <td><i class="fa-regular fa-comment"></i> <%= book.book_comments.count %></td>
             <td id="favorite_buttons_<%= book.id %>">
               <%= render 'favorites/fav', book:book %>
-              </td>
-            <td>Comments: <%= book.book_comments.count %></td>
-            <td>Views: <%= book.read_counts.count %></td>
+            </td>
+            <td><i class="fa-brands fa-watchman-monitoring"></i> <%= book.read_counts.count %></td>
             <td><%= render "layouts/static.rate", book: book %></td>
           </tr>
         <% end %>

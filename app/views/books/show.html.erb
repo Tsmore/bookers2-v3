@@ -20,9 +20,9 @@
                 <%= link_to @book.category, tagsearches_search_path(content: @book.category) %>
               <% end %>
             </td>
+            <td id="comments_count_<%= @book.id %>"><i class="fa-regular fa-comment"></i> <%= @book.book_comments.count %></td>
             <td id="favorite_buttons_<%= @book.id %>"><%= render 'favorites/fav', book:@book %></td>
-            <td id="comments_count_<%= @book.id %>">Comments: <%= @book.book_comments.count %></td>
-            <td>Views: <%= @book.read_counts.count %></td>
+            <td><i class="fa-brands fa-watchman-monitoring"></i> <%= @book.read_counts.count %></td>
             <td><%= render "layouts/static.rate", book: @book %></td>
             <% if @book.user == current_user %>
               <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-outline-success" %></td>

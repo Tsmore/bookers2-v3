@@ -21,7 +21,11 @@
               <td><%= link_to user_path(book.user) do %><%= image_tag book.user.get_profile_image(80,80) %><% end %></td>
               <td><%= link_to book.title, book_path(book) %></td>
               <td><%= book.body %></td>
-              <td>Comments: <%= book.book_comments.count %></td>
+              <td><i class="fa-regular fa-comment"></i> <%= book.book_comments.count %></td>
+              <td id="favorite_buttons_<%= book.id %>">
+                <%= render 'favorites/fav', book:book %>
+              </td>
+              <td><i class="fa-brands fa-watchman-monitoring"></i> <%= @book.read_counts.count %></td>
               <td><%= render "layouts/static.rate", book: book %></td>
             </tr>
           <% end %>
