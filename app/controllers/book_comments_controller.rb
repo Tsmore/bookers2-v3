@@ -6,6 +6,7 @@ class BookCommentsController < ApplicationController
     comment.book_id = @book.id
     comment.save
     @book_comment = BookComment.new
+    render 'book_comments'
   end
 
   def destroy
@@ -13,6 +14,7 @@ class BookCommentsController < ApplicationController
     @book = @book_comment.book
     @book_comment.destroy
     @book_comment = BookComment.new
+    render 'book_comments'
   end
 
   private

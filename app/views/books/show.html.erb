@@ -20,7 +20,7 @@
                 <%= link_to @book.category, tagsearches_search_path(content: @book.category) %>
               <% end %>
             </td>
-            <td id="comments_count_<%= @book.id %>"><i class="fa-regular fa-comment"></i> <%= @book.book_comments.count %></td>
+            <td id="comments_count_<%= @book.id %>"><i class="fa-regular fa-comment"></i> <span class="count"><%= @book.book_comments.count %></span></td>
             <td class=<%= "favorite-" + @book.id.to_s %> ><%= render 'favorites/fav', book:@book %></td>
             <td id="bookmark_button_<%= @book.id %>"><%= render 'bookmarks/bookmark', book: @book %></td>
             <td><i class="fa-brands fa-watchman-monitoring"></i> <%= @book.read_counts.count %></td>
