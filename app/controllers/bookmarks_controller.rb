@@ -6,13 +6,14 @@ class BookmarksController < ApplicationController
     if @bookmark.valid?
       @bookmark.save
     end
+    render 'bookmarks'
   end
 
   def destroy
     @bookmark = Bookmark.find(params[:id])
     @book = @bookmark.book
     @bookmark.destroy
-
+    render 'bookmarks'
   end
 
   private
