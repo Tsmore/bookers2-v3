@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+
   devise_for :users
   root to: 'homes#top'
-  get 'home/about' => 'homes#about', as: 'about'
-  get "search" => "searches#search"
+  # =>は古い書き方だからrails4以降はto:で記述
+  get 'home/about', to: 'homes#about', as: 'about'
+  get "search", to: "searches#search"
+  get 'tagsearches/search', to: 'tagsearches#search'
+
+  # memberブロック内で定義されたルートは各ユーザーのidをURLに含んだ状態で生成される
   resources :users, only: [:index, :show, :update, :edit]  do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
@@ -11,12 +16,13 @@ Rails.application.routes.draw do
       get :bookmarks
     end
   end
+
   resources :books, only: [:index, :show, :create, :update, :destroy, :edit]  do
     resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]
     resources :bookmarks, only: [:create, :destroy]
   end
+
   resources :chats, only: [:create, :destroy, :show]
-  get 'tagsearches/search', to: 'tagsearches#search'
 
 end
