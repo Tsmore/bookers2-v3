@@ -19,9 +19,9 @@
             <tr>
               <th scope="row"><%= image_tag user.get_profile_image(100,100) %></th>
               <td><%= user.name %></td>
-              <td>following: <%= user.followings.count %></td>
-              <td>followers: <%= user.followers.count %></td>
-              <td id="follow_button_<%= user.id %>"><%= render 'relationships/buttons', user: user %></td>
+              <td id="following_count_<%= user.id %>">following: <%= user.followings.count %></td>
+              <td id="follower_count_<%= user.id %>">followers: <%= user.followers.count %></td>
+              <td id="follow_button_<%= user.id %>"><%= render 'relationships/button', user: user %></td>
               <td><%= link_to 'Show', user_path(user) %></td>
             </tr>
           <% end %>
