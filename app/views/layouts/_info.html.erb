@@ -12,11 +12,11 @@
     </tr>
     <tr>
       <th scope="row">following</th>
-      <td><%= link_to user.followings.count, user_followings_path(user) %></td>
+      <td><%= link_to user.followings.count, user_followings_path(user), class: "text-decoration-none" %></td>
     </tr>
     <tr>
       <th scope="row">followers</th>
-      <td><%= link_to user.followers.count, user_followers_path(user) %></td>
+      <td><%= link_to user.followers.count, user_followers_path(user), class: "text-decoration-none" %></td>
     </tr>
   </tbody>
 </table>

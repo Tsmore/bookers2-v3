@@ -19,7 +19,7 @@
           <% @books.each do |book| %>
             <tr>
               <td><%= link_to user_path(book.user) do %><%= image_tag book.user.get_profile_image(80,80) %><% end %></td>
-              <td><%= link_to book.title, book_path(book) %></td>
+              <td><%= link_to book.title, book_path(book), class: "text-decoration-none" %></td>
               <td><%= book.body %></td>
               <td><i class="fa-regular fa-comment"></i> <%= book.book_comments.count %></td>
               <td class=<%= "favorite-" + book.id.to_s %> >
