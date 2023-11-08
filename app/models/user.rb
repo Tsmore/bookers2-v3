@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :rooms, through: :user_rooms, dependent: :destroy
   has_many :read_counts, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  has_many :videos, dependent: :destroy
 
   validates :name, uniqueness: true, presence: true, length: {minimum: 2, maximum: 20}
   validates :introduction, length: {maximum: 50}
