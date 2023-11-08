@@ -20,17 +20,19 @@
     </tr>
   </tbody>
 </table>
-<% if current_user == user %>
-  <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
-    <i class="fa-solid fa-user-cog"></i>
-  <% end %>
-<% else %>
-  <% if current_user.following?(user) %>
-    <%= link_to "Following", user_relationships_path(user.id), method: :delete, remote: true, class: "btn btn-outline-info" %>
+<% if user.email != "guest@guest.com" %>
+  <% if current_user == user %>
+    <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
+      <i class="fa-solid fa-user-cog"></i>
+    <% end %>
   <% else %>
-    <%= link_to "Follow", user_relationships_path(user.id), method: :post, remote: true, class: "btn btn-outline-primary" %>
-  <% end %>
-  <% if current_user.mutual_follow?(user) %>
-    <%= link_to "Chat Room", chat_path(user.id), class: "btn btn-outline-success" %>
+    <% if current_user.following?(user) %>
+      <%= link_to "Following", user_relationships_path(user.id), method: :delete, remote: true, class: "btn btn-outline-info" %>
+    <% else %>
+      <%= link_to "Follow", user_relationships_path(user.id), method: :post, remote: true, class: "btn btn-outline-primary" %>
+    <% end %>
+    <% if current_user.mutual_follow?(user) %>
+      <%= link_to "Chat Room", chat_path(user.id), class: "btn btn-outline-success" %>
+    <% end %>
   <% end %>
 <% end %>
