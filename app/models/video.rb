@@ -12,8 +12,9 @@ class Video < ApplicationRecord
   private
 
   def clip_type
-    if clip.attached? && !clip.content_type.in?(%w(video/mp4 video/mov video/avi))
-      errors.add(:clip, 'はMP4、MOV、またはAVI形式でなければなりません。')
+    if clip.attached? && !clip.content_type.in?(%w(video/mp4 video/mov video/avi video/quicktime).map(&:downcase))
+      errors.add(:clip, 'must be a file of type: mp4, mov, avi.')
     end
   end
+
 end

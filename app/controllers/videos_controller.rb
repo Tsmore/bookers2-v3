@@ -7,12 +7,14 @@ class VideosController < ApplicationController
       flash[:notice] = "Video was successfully uploaded"
       redirect_to video_path(@video)
     else
+      @videos = Video.all
       render :index
     end
   end
 
   def show
     @video = Video.find(params[:id])
+    @videonew = Video.new
   end
 
   def index
@@ -44,7 +46,7 @@ class VideosController < ApplicationController
   private
 
   def video_params
-    params.require(:video).permit(:title, :body, :category, :video)
+    params.require(:video).permit(:title, :body, :category, :clip)
 
   end
 end

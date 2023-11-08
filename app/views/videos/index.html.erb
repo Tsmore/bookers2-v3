@@ -9,10 +9,10 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col"></th>
+            <th scope="col">Video</th>
             <th scope="col">Title</th>
             <th scope="col">Description</th>
-            <th scope="col">Tag</th>
+            <th scope="col">Category</th>
             <th colspan="6"></th>
             <!--<th scope="col">-->
             <!--  <div class="dropdown">-->
@@ -30,13 +30,23 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
+          <% @videos.each do |video| %>
+            <tr>
+              <td>
+                <%= link_to video_path(video) do %>
+                  <% if video.clip.attached? %>
+                    <%= video_tag url_for(video.clip), size: "100x100" %>
+                  <% else %>
+                    <span>No video available</span>
+                  <% end %>
+                <% end %>
+              </td>
+              <td><%= link_to video.title, video_path(video) %></td>
+              <td><%= video.body %></td>
+              <td><%= video.category %></td>
+              <td></td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
