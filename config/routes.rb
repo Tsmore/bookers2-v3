@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   # memberブロック内で定義されたルートは各ユーザーのidをURLに含んだ状態で生成される
   resources :users, only: [:index, :show, :update, :edit]  do
     resource :relationships, only: [:create, :destroy]
-    get 'followings' => 'relationships#followings', as: 'followings'
-    get 'followers' => 'relationships#followers', as: 'followers'
+    get 'followings', to: 'relationships#followings', as: 'followings'
+    get 'followers', to: 'relationships#followers', as: 'followers'
     member do
       get :bookmarks
     end
