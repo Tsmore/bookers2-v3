@@ -6,7 +6,7 @@ class VideosController < ApplicationController
 
     if @video.save
       VideoProcessingJob.perform_later(@video.id)
-      flash[:notice] = "Video upload started. Processing will be completed shortly."
+      flash[:notice] = "Video was successfully uploaded"
       redirect_to video_path(@video)
     else
       @videos = Video.all
