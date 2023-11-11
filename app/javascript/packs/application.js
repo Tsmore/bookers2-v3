@@ -14,7 +14,6 @@ import "channels"
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
-import "load.js"
 
 import Raty from "raty.js"
 window.raty = function(elem,opt) {

@@ -1,6 +1,6 @@
 @use '~bootstrap/scss/bootstrap';
 
-// // uploading用
+// Loadingの文字を横にコロコロするやつ
 #load-bg {
   display: none;
   position: fixed;
@@ -201,3 +201,73 @@
     opacity:0;
   }
 }
+
+// Now　Loadingを表示用
+.content {
+  visibility: hidden;
+  transition: all 0.5s;
+  transition-delay: 0.5s;
+}
+
+.loader {
+  z-index: 2;
+  width: 300px;
+  height: 300px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s;
+  transition-delay: 0.5s;
+}
+
+.loader span {
+  position: absolute;
+  border: 3px solid #00ffff;
+  width: 100%;
+  height: 100%;
+  animation: animate 5s linear infinite;
+  border-radius: 70% 30% 70% 30% / 30% 70% 30% 70%;
+}
+.loader span:nth-child(2) {
+  animation-delay: .5s;
+  border-radius: 70% 30% 70% 30% / 30% 70% 30% 70%;
+}
+.loader span:nth-child(3) {
+  animation-direction: reverse;
+  border-radius: 70% 30% 70% 30% / 30% 70% 30% 70%;
+}
+.loader span:nth-child(4) {
+  animation-direction: reverse;
+  animation-delay: .5s;
+  border-radius: 70% 30% 70% 30% / 30% 70% 30% 70%;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader h2 {
+  color: #222;
+  font-size: 2.5rem;
+}
+
+
+
+
+
+
+
+
+
+
+

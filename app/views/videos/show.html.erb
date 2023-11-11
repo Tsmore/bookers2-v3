@@ -10,7 +10,7 @@
       <p>Category: <%= @video.category %></p>
 
       <% if @video.clip.attached? %>
-        <%= video_tag url_for(@video.clip), controls: true, class: "video-size" %>
+        <%= video_tag url_for(@video.clip), controls: true, class: "video-size", size: "500x500" %>
       <% else %>
         <p>No video available</p>
       <% end %>
