@@ -204,9 +204,8 @@
 
 // Now　Loadingを表示用
 .content {
-  visibility: hidden;
-  transition: all 0.5s;
-  transition-delay: 0.5s;
+  transition: all 1s;
+  transition-delay: 1s;
 }
 
 .loader {
@@ -217,12 +216,11 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.5s;
-  transition-delay: 0.5s;
+  transition: all 1s;
+  transition-delay: 1s;
 }
 
 .loader span {

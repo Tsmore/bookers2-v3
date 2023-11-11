@@ -13,14 +13,12 @@
 
   <body>
     <!-- ローディングアニメーション -->
-    <div class="loader-bg">
-      <div class="loader">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <h2>Now Loading...</h2>
-      </div>
+    <div class="loader">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <h2>Now Loading...</h2>
     </div>
     <div class="content">
       <%= render 'layouts/header' %>
@@ -38,6 +36,5 @@
       <%= yield %>
       <%= render 'layouts/footer' %>
     </div>
-    <%= javascript_pack_tag 'load' %>
   </body>
 </html>
