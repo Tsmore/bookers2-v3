@@ -223,6 +223,11 @@
   transition-delay: 1s;
 }
 
+.loader h2 {
+  color: #222;
+  font-size: 2.5rem;
+}
+
 .loader span {
   position: absolute;
   border: 3px solid #00ffff;
@@ -254,10 +259,6 @@
   }
 }
 
-.loader h2 {
-  color: #222;
-  font-size: 2.5rem;
-}
 
 
 
