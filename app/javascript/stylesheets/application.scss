@@ -324,19 +324,19 @@
 
 @keyframes fontAnime {
   0% {
-    transform: translateY(0);
+    transform: translateY(0) rotate(80degdeg);
   }
 
   30% {
-    transform: translateY(-30%)
+    transform: translateY(-50%) rotate(160deg);
   }
 
   60% {
-    transform: translateY(30%);
+    transform: translateY(30%) rotate(290deg);
   }
 
   100% {
-    transform: translateY(0)
+    transform: translateY(0) rotate(360deg);
   }
 }
 
