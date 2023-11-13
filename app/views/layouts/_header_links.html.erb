@@ -1,0 +1,13 @@
+<% if user_signed_in? %>
+  <%= nav_item(user_path(current_user), 'fa-solid fa-home', 'Home') %>
+  <%= nav_item(users_path, 'fa-solid fa-users', 'Users') %>
+  <%= nav_item(books_path, 'fa-solid fa-book-open', 'Books') %>
+  <%= nav_item(videos_path, 'fa-solid fa-video', 'Videos') %>
+  <%= nav_item(bookmarks_user_path(current_user), 'fa-solid fa-book-bookmark', 'Bookmarks') %>
+  <%= nav_item(destroy_user_session_path, 'fa-solid fa-sign-out-alt', 'Log out', method: :delete) %>
+<% else %>
+  <%= nav_item(root_path, 'fa-solid fa-home', 'Home') %>
+  <%= nav_item(about_path, 'fa-solid fa-link', 'About') %>
+  <%= nav_item(new_user_registration_path, 'fa-solid fa-user-plus', 'Sign up') %>
+  <%= nav_item(new_user_session_path, 'fa-solid fa-sign-in-alt', 'Log in') %>
+<% end %>
